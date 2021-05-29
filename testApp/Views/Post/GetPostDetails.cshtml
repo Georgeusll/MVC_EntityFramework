@@ -1,0 +1,64 @@
+﻿@model testApp.Models.Post_tag_mix.Post
+@inject testApp.Handlers.IHandlerInterface _injection
+@using testApp.Models.Post_tag_mix
+@{
+    ViewData["Title"] = "GetPostDetails";
+}
+
+@{
+    var tags = _injection.GetTags();
+    var displayTags = new List<Tag>();
+    var postTags = new List<PostTag>();
+    string tagsString = "";
+
+
+    foreach (var tag in tags)
+    {
+        var postTag = _injection.PostTagByPostId(Model.Id).Where(x => x.TagId == tag.Id).ToList();
+        if (postTag.Count != 0 && postTag != null)
+        {
+            postTags.Add(postTag[0]);
+            displayTags.Add(tag);
+        }
+
+    }
+
+}
+
+
+    <h1>GetPostDetails</h1>
+
+    <div>
+        <h4>Post</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PostTags)
+            </dt>
+            @foreach (var tag in displayTags)
+            {
+                tagsString += (" " + tag.TagName);
+            }
+            <dd class="col-sm-10">
+                <p>@tagsString</p>
+
+            </dd>
+        </dl>
+    </div>
+    <div>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="GetPosts">Back to List</a>
+    </div>

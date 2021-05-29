@@ -1,0 +1,49 @@
+﻿@model testApp.Models.Post_tag_mix.Stash
+@inject testApp.Handlers.IHandlerInterface _injection
+@{ ViewData["Title"] = "AddPost"; }
+
+<h1>AddPost</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPost">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Postname" class="control-label"></label>
+                <input asp-for="Postname" class="form-control" />
+                <span asp-validation-for="Postname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tagids" class="control-label"></label>
+                @using (Html.BeginForm())
+                {
+
+    @for (int i = 0; i < Model.Stashholder.Count(); i++)
+    {
+@Html.CheckBoxFor(model => model.Stashholder[i].IsSelected)
+                    <label>@Model.Stashholder[i].TagName</label>
+                                        @Html.HiddenFor(model => model.Stashholder[i].TagId)
+                                                            @Html.HiddenFor(model => model.Stashholder[i].TagId)}
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>}
+
+            </div>
+            @*<div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>*@
+        </form>
+    </div>
+</div>
+
+<div>
+    <a  asp-action="GetPosts">Back to List</a>
+</div>
+

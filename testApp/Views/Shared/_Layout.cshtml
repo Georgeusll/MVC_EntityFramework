@@ -1,0 +1,101 @@
+﻿
+@using Microsoft.AspNetCore.Identity;
+
+@using testApp.Models;
+
+@inject SignInManager<User> signInManager;
+@inject UserManager<User> userManager;
+
+
+@{
+    ViewData["Title"] = "mainpage";
+}
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - testApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/form.css" />
+    <link rel="stylesheet" href="~/css/course.css" />
+    <link rel="stylesheet" href="~/css/table.css" />
+    <script src="https://kit.fontawesome.com/be998e6a17.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a asp-controller="page" asp-action="mainpage"><img src="~/images/logo.png"></a>
+            <div class="nav-links" id="navlinks">
+                <i class="fa fa-arrows-alt" onclick="hideMenu()"></i>
+
+                <ul>
+                    <li><a asp-controller="page" asp-action="mainpage">HOME</a></li>
+                    <li><a asp-controller="page" asp-action="about">ABOUT</a></li>
+                    <li><a asp-controller="page" asp-action="course">COURSE</a></li>
+
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-controller="Post" asp-action="GetPosts">Post</a></li>
+                        <li><a asp-controller="Post" asp-action="GetTags">Tags</a></li>
+                        <li><a asp-controller="Auth" asp-action="LogOut">Sign Out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+                        <li><a asp-controller="Auth" asp-action="SignIn">Sign In</a></li>
+                    }
+
+
+
+                    <li><a href="#footer">CONTACT US</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-align-justify" onclick="showMenu()" id="menuicon"></i>
+
+        </nav>
+
+
+    </section>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <section class="footer" id="footer">
+        <h4>Contact us</h4>
+
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>Made by <br> Giorgi Bokhochadze</p>
+        <a href="http://fb.com/georgeusll "><i class="fa fa-facebook"></i></a>
+    </section>
+    <script src="~/js/javascript.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

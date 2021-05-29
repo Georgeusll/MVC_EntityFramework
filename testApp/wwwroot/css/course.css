@@ -1,0 +1,73 @@
+#courses{
+    color:#f44336;
+    text-align:center;
+  
+    margin:10px;
+    text-shadow: 2px 2px 5px rgb(128, 25, 25);
+    min-height:0;
+}
+.cs{
+    
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+   justify-content: space-between ;
+   background-color: #99251c;
+
+}
+button{
+    width:20%;
+    height:30px;
+    justify-self: le;
+    
+}
+.compe{
+    
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between ;
+    background-color: rgb(40, 55, 187);
+ }
+ .ee{
+    
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between ;
+    background-color: rgb(199, 64, 30);
+ }
+ .be{
+    
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between ;
+    background-color: rgb(40, 189, 53);
+ }
+ .smt{
+    
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    justify-content: space-between ;
+    background-color: rgb(27, 58, 58);
+ }
+ @media(max-width:768px){
+     .cs{
+         display:grid;
+         grid-template-columns: 1fr;
+     }
+     .compe{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .ee{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .be{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .smt{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+
+ }

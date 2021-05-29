@@ -1,0 +1,36 @@
+.teachers {
+    border-collapse: collapse;
+    width: 100vw;
+    max-width: 1000px;
+}
+  
+  .teachers td, .teachers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+    position:center;
+    
+  }
+  
+  .teachers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .teachers tr:hover {background-color: #ddd;}
+  
+  .teachers th {
+      
+    align-content: center;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    text-align: center;
+    background-color: rgb(128, 25, 25);
+    color: white;
+  }
+  .teachers img{
+     
+    padding-left:30%;
+  
+      width:200px;
+      height:250px;
+      overflow:hidden;
+      
+  }

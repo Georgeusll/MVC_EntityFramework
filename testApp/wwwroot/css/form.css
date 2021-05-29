@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(190, 7, 7);
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 5px 5px 5px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #660d0d;
+    color: white;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    float: right;
+  }
+  .reason{
+      background-color:#660d0d;
+  }
+  input[type=submit]:hover {
+    background-color: #f31010;
+  }
+  
+  .container {
+    border-radius: 5px;
+    background-color: #8d0808;
+    padding: 20px;
+  }
+  
+  .col2 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  #subject{
+      background-color: rgb(122, 17, 17);
+  }
+  .col1 {
+      background-color: red;
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col2, .col1, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
